@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+{% block title %}
+<title>
+Contact
+</title>
+{% endblock %}
+
+
+{% block monCSS %}
+<link href="{% static 'css/message.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block menu %}
+  <div class="blog-masthead">
+    <div class="container">
+      <nav class="blog-nav">
+        <a class="blog-nav-item" href="{% url 'test' %}">Home</a>
+        <a class="blog-nav-item active" href="#">Contact</a>
+      </nav>
+    </div>
+  </div>
+{% endblock %}
+
+
+
+{% block enTete %}
+<br/>
+<div class="jumbotron">
+  <h1>1 étoile !</h1>
+  <p></p>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+<div class="text-center">
+<h2>Vous pouvez me laisser un message ici !</h2>
+</div>
+<br/>
+<br/>
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-3'>
+
+{% if messages %}
+<div class="alert alert-success text-center alert-dismissible">
+    {% for message in messages %}
+    <p style="text-align: center;">{{ message }}</p><br/>
+    {% endfor %}
+</div>
+{% endif %}
+
+<form method='POST' action=''>
+
+{% csrf_token %}
+{{ form|crispy }}
+
+<input class='btn btn-primary center-block' type='submit' value='Submit' />
+
+</form>
+</div>
+</div>
+
+{% endblock %}
+
+{% block suite%}
+<br/>
+<br/>
+<div class="text-center">
+<a class="btn btn-lg btn-success" href="{% url 'liste' %}">
+  <i class="fa fa-home fa-2x"></i> Retour<br>Page principale</a>
+</div>
+<br/>
+<br/>
+
+{% endblock %}

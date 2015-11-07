@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<h4>Liens vers le fichier static des images :</h4>
+<p>{% static 'img/etoile.jpeg' %}</p>
+
+<h4>Liens vers le fichier de base :</h4>
+<p>{{fichier_base}}</p>
+
+<h4>Connexion vers la base de données :</h4>
+<p>{{db}}</p>
+
+<h4>Le nom de la base de données :</h4>
+<p>{{nomdb}}</p>
+
+{% endblock %}

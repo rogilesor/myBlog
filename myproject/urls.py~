@@ -1,0 +1,40 @@
+"""myproject URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.8/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Add an import:  from blog import urls as blog_urls
+    2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
+"""
+from django.conf.urls import include, url
+from django.contrib import admin
+from django.views.generic.dates import ArchiveIndexView
+from blog2.views import ParutionDetailView
+#from blog.views import ArticleDayArchiveView
+from blog2.views import ParutionListView
+#from blog.views import ArticleDetailView
+#from blog.models import Article
+
+
+urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^testeur$','testeur.views.home',name="testeur"),
+    url(r'^parutions/$', ParutionListView.as_view(),name="liste"),
+    url(r'^parution/(?P<pk>[\d]+)/$', ParutionDetailView.as_view(), name='parution-detail'),
+
+#    url(r'^archive/$',ArchiveIndexView.as_view(model=Article, date_field="date"),name="article_archive"),
+#    url(r'^archive/(?P<year>[0-9]{4})/(?P<month>[-\w]+)/(?P<day>[0-9]+)/$',ArticleDayArchiveView.as_view(),name="archive_day"),
+#    url(r'^accounts/', include('registration.backends.default.urls')),
+
+
+    #Fait parti du menu
+    url(r'^message','message.views.myMessage',name="monMessage"),
+    url(r'^$',ParutionDetailView.as_view(),name="test"),
+]
