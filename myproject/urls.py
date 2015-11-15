@@ -26,8 +26,14 @@ from blog2.views import ParutionListView
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^testeur$','testeur.views.home',name="testeur"),
+    url(r'^accounts/srvup$','accounts.views.srvup',name='srvup'),
     url(r'^parutions/$', ParutionListView.as_view(),name="liste"),
     url(r'^parution/(?P<pk>[\d]+)/$', ParutionDetailView.as_view(), name='parution-detail'),
+
+    url(r'^login/$','myauth.views.mylogin',name="login"),
+    url(r'^register/$','myauth.views.register',name="register"),
+    url(r'^logout/$','myauth.views.mylogout',name="logout"),
+
 
 #    url(r'^archive/$',ArchiveIndexView.as_view(model=Article, date_field="date"),name="article_archive"),
 #    url(r'^archive/(?P<year>[0-9]{4})/(?P<month>[-\w]+)/(?P<day>[0-9]+)/$',ArticleDayArchiveView.as_view(),name="archive_day"),

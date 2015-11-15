@@ -2,11 +2,62 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
+{% block menu %}
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><div class="liens">1star</div></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+          <li> <a  href="{% url 'test' %}"><div class="liens">Home</div><span class="sr-only">(current)</span></a></li>
+          <li><a  href="{% url 'monMessage' %}"><div class="liens">Contact</div></a></li>
+          {% if user.is_authenticated %}
+          <li><a  href="{% url 'logout' %}"><div class="liens">LogOut</div></a></li>
+          {% else %}
+          <li class="active"><a  href="{% url 'login' %}"><div class="liens">LogIn</div></a></li>
+          <li><a  href="{% url 'register' %}"><div class="liens">Register</div></a></li>
+          {% endif %}          
+
+
+          </ul>
+
+          <form class="navbar-form navbar-left" method="GET" role="search" action="{% url 'liste' %}">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" name="q"></div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+
+          
+          </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+{% endblock %}
+
+
 
 {% block content %}
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-3'>
 <h1>Login</h1>
+
+{% if messages %}
+<div class="alert alert-success text-center alert-dismissible">
+    {% for message in messages %}
+    <p style="text-align: center;">{{ message }}</p><br/>
+    {% endfor %}
+</div>
+{% endif %}
+
 <form method="post" action=".">
   {% csrf_token %}
   {{ form|crispy }}
@@ -18,11 +69,5 @@
 
 </div>
 <hr/>
-<div class='row'>
-<div class='col-sm-6 col-sm-offset-3 text-align-center'>
-<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
-<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
-</div>
-</div>
 
 {% endblock %}

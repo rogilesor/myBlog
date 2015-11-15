@@ -16,6 +16,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
+AUTH_USER_MODEL = 'accounts.MyUser'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -33,7 +35,9 @@ INSTALLED_APPS = (
     #mes extensions
     'message',
     'blog2',
-    'registration',
+    'comments',
+    'accounts',
+    #'registration',
     #extensions django
     'crispy_forms',
     'testeur',

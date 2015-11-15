@@ -17,9 +17,11 @@
             {% endautoescape %}
             </p>
 						<p>Le Detail :   
+            <a class="liens" href="{% url 'parution-detail' pk=article.pk %}">
             <button type="button" class="btn btn-primary">
-            <a class="liens" href="{% url 'parution-detail' pk=article.pk %}">Lien</a>
+            Lien
             </button>
+            </a>
             </p>
 
 					</div>

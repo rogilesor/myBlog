@@ -49,7 +49,7 @@ def myMessage(request):
 		s.sendmail(frm, to, msg.as_string())
 		s.quit()
 
-		messages.success(request, 'Votre mail a été envoyé')		
+		messages.success(request, 'Votre mail envoye')		
 
 	return render(request,template,context)
 

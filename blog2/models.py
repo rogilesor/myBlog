@@ -12,6 +12,7 @@ class Parution(models.Model):
 	titre = models.CharField(max_length=255,default="sans titre")
 	auteur = models.CharField(max_length=100)
 	contenu = models.TextField(default="blabla")
+	# slug = models.SlugField(unique=True,null=True,blank=True)
 	classement = models.ForeignKey(TypeParution)
 	date = models.DateTimeField(auto_now_add=True,auto_now=False,verbose_name="Date de parution")
 
