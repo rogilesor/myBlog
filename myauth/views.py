@@ -11,20 +11,22 @@ def mylogin(request):
 	if form.is_valid():
 		username = form.cleaned_data['username']
 		password = form.cleaned_data['password']
+
+		print('Attention')
 		
 		try :
 			the_user = User.objects.get(username=username)
 		except :
 			the_user = None
 
+
+		print(the_user)
+
 		if the_user is not None:
-
 			user = authenticate(username=the_user.username,password=password)
-
 			if user.is_active:
 				login(request,user)
 				messages.success(request, 'Vous êtes maintenant connecté')	
-
 			else:
 				messages.success(request, "Votre compte est en attente d'activation")
 				pass

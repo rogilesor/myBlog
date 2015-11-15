@@ -2,6 +2,14 @@ from django import forms
 from .models import MyUser
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="Username")
+    # email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
+
+
 class RegisterForm(forms.Form):
     """
     Provient du cours coding for entrepreneurs

@@ -26,13 +26,11 @@ from blog2.views import ParutionListView
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^testeur$','testeur.views.home',name="testeur"),
-    url(r'^accounts/srvup$','accounts.views.srvup',name='srvup'),
+    # url(r'^accounts/srvup$','accounts.views.srvup',name='srvup'),
     url(r'^parutions/$', ParutionListView.as_view(),name="liste"),
     url(r'^parution/(?P<pk>[\d]+)/$', ParutionDetailView.as_view(), name='parution-detail'),
 
-    url(r'^login/$','myauth.views.mylogin',name="login"),
-    url(r'^register/$','myauth.views.register',name="register"),
-    url(r'^logout/$','myauth.views.mylogout',name="logout"),
+    #url(r'^login/$','myauth.views.mylogin',name="login"),
 
 
 #    url(r'^archive/$',ArchiveIndexView.as_view(model=Article, date_field="date"),name="article_archive"),
@@ -43,4 +41,9 @@ urlpatterns = [
     #Fait parti du menu
     url(r'^message','message.views.myMessage',name="monMessage"),
     url(r'^$',ParutionListView.as_view(),name="test"),
+    url(r'^login/$','accounts.views.mylogin',name="login"),
+    url(r'^register/$','accounts.views.register',name="register"),
+    url(r'^logout/$','accounts.views.mylogout',name="logout"),
+
+
 ]
