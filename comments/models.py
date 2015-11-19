@@ -1,5 +1,5 @@
 from django.db import models
-from blog2.models import Parution
+from blogdef.models import Parution
 # Create your models here.
 from accounts.models import MyUser
 
@@ -34,4 +34,5 @@ class Comment(models.Model):
 	objects = CommentManager()
 
 	def __str__(self):
-		return self.user.username
+		maChaine = self.user.username
+		return maChaine

@@ -26,21 +26,30 @@ from blog2.views import ParutionListView
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^testeur$','testeur.views.home',name="testeur"),
-    # url(r'^accounts/srvup$','accounts.views.srvup',name='srvup'),
-    url(r'^parutions/$', ParutionListView.as_view(),name="liste"),
-    url(r'^parution/(?P<pk>[\d]+)/$', ParutionDetailView.as_view(), name='parution-detail'),
 
+    #supplément simple auth
     #url(r'^login/$','myauth.views.mylogin',name="login"),
 
+    #archives
+    #url(r'^archive/$',ArchiveIndexView.as_view(model=Article, date_field="date"),name="article_archive"),
+    #url(r'^archive/(?P<year>[0-9]{4})/(?P<month>[-\w]+)/(?P<day>[0-9]+)/$',ArticleDayArchiveView.as_view(),name="archive_day"),
 
-#    url(r'^archive/$',ArchiveIndexView.as_view(model=Article, date_field="date"),name="article_archive"),
-#    url(r'^archive/(?P<year>[0-9]{4})/(?P<month>[-\w]+)/(?P<day>[0-9]+)/$',ArticleDayArchiveView.as_view(),name="archive_day"),
-#    url(r'^accounts/', include('registration.backends.default.urls')),
+    #supplément accounts
+    #url(r'^accounts/', include('registration.backends.default.urls')),
+    #url(r'^accounts/srvup$','accounts.views.srvup',name='srvup'),
 
+    #supplément blogdef
+    url(r'^$','blogdef.views.publication_list',name="test"),#menu
+    url(r'^parutions/$','blogdef.views.publication_list',name="liste"),
+    url(r'^parution/(?P<pk>[\d]+)/$','blogdef.views.publication_detail' , name='parution-detail'),
+
+    #supplément blog2
+    # url(r'^$',ParutionListView.as_view(),name="test"), #menu
+    # url(r'^parutions/$', ParutionListView.as_view(),name="liste"),
+    # url(r'^parution/(?P<pk>[\d]+)/$', ParutionDetailView.as_view(), name='parution-detail'),
 
     #Fait parti du menu
     url(r'^message','message.views.myMessage',name="monMessage"),
-    url(r'^$',ParutionListView.as_view(),name="test"),
     url(r'^login/$','accounts.views.mylogin',name="login"),
     url(r'^register/$','accounts.views.register',name="register"),
     url(r'^logout/$','accounts.views.mylogout',name="logout"),

@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     #mes extensions
     'message',
     'blog2',
+    'blogdef',
     'accounts',
     'comments',
     #'registration',
