@@ -35,8 +35,8 @@ INSTALLED_APPS = (
     #mes extensions
     'message',
     'blog2',
-    'comments',
     'accounts',
+    'comments',
     #'registration',
     #extensions django
     'crispy_forms',
