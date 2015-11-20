@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime  
+from django.core.urlresolvers import reverse
 
 
 class TypeParution(models.Model):
@@ -18,4 +19,7 @@ class Parution(models.Model):
 
 	def __str__(self):
 		return self.titre
+
+	def get_absolute_url(self):
+		return reverse("parution-detail", kwargs={"pk": self.pk})
 
